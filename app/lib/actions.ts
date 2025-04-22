@@ -120,7 +120,7 @@ export async function authenticate(
     await signIn("credentials", formData);
   } catch (error) {
     if (error instanceof AuthError) {
-      const errorType = error.type;
+      const errorType = error.cause as string;
       if (errorType === "CredentialsSignin") return "Invalid credentials.";
       else return "Something went wrong.";
     }
